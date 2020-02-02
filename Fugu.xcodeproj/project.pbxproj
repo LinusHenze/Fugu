@@ -1,0 +1,664 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		150A1EBD235B940D00B900C5 /* checkm8_arm64.bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150A1EBA235B93DF00B900C5 /* checkm8_arm64.bin */; };
+		150A1EBE235B940D00B900C5 /* usb_0xA1_2_arm64.bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150A1EB9235B93DF00B900C5 /* usb_0xA1_2_arm64.bin */; };
+		150A1EBF235B940D00B900C5 /* t8010_t8011_disable_wxn_arm64.bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150A1EBB235B93E000B900C5 /* t8010_t8011_disable_wxn_arm64.bin */; };
+		150A1ED3235BA36D00B900C5 /* iStrap@4x.bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150A1ED0235BA36C00B900C5 /* iStrap@4x.bin */; };
+		150A1ED4235BA36D00B900C5 /* t8010_t8011_iStrap_loader.bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150A1ED1235BA36D00B900C5 /* t8010_t8011_iStrap_loader.bin */; };
+		150A1ED5235BA36D00B900C5 /* iStrap@2x.bin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150A1ED2235BA36D00B900C5 /* iStrap@2x.bin */; };
+		15A8B9CF2354F5D000574782 /* StatusIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9CA2354F5D000574782 /* StatusIndicator.swift */; };
+		15A8B9D02354F5D000574782 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9CB2354F5D000574782 /* Struct.swift */; };
+		15A8B9D12354F5D000574782 /* CommandLineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9CC2354F5D000574782 /* CommandLineParser.swift */; };
+		15A8B9D22354F5D000574782 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9CD2354F5D000574782 /* utils.swift */; };
+		15A8B9D32354F5D000574782 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9CE2354F5D000574782 /* main.swift */; };
+		15A8B9F52354F60A00574782 /* PwnUSB_IOKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9EA2354F60A00574782 /* PwnUSB_IOKit.swift */; };
+		15A8B9F62354F60A00574782 /* PwnUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9EB2354F60A00574782 /* PwnUSB.swift */; };
+		15A8B9F72354F60A00574782 /* DeviceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9EC2354F60A00574782 /* DeviceConfig.swift */; };
+		15A8B9F82354F60A00574782 /* rmsigchks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9EE2354F60A00574782 /* rmsigchks.swift */; };
+		15A8B9F92354F60A00574782 /* pwn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9EF2354F60A00574782 /* pwn.swift */; };
+		15A8B9FA2354F60A00574782 /* iStrap_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9F02354F60A00574782 /* iStrap_module.swift */; };
+		15A8B9FB2354F60A00574782 /* SimpleUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9F22354F60A00574782 /* SimpleUSB.swift */; };
+		15A8B9FC2354F60A00574782 /* USBAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9F32354F60A00574782 /* USBAbstraction.swift */; };
+		15A8B9FD2354F60A00574782 /* IOKitUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8B9F42354F60A00574782 /* IOKitUSB.swift */; };
+		15A8BA12235512F200574782 /* lzss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8BA11235512F200574782 /* lzss.swift */; };
+		15A8BA14235514D300574782 /* lzss.c in Sources */ = {isa = PBXBuildFile; fileRef = 15A8BA13235514D300574782 /* lzss.c */; };
+		15A8BA162355187300574782 /* lzss_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8BA152355187300574782 /* lzss_module.swift */; };
+		15A9625223E7206300831666 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15A9624C23E6FF0700831666 /* README.md */; };
+		15A9625323E7206300831666 /* 3rdParty.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15A9624D23E7135F00831666 /* 3rdParty.txt */; };
+		15A9625423E7206300831666 /* LICENSE in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15A9624E23E714B000831666 /* LICENSE */; };
+		15DAC6E6236727C50082FC3F /* iDownload.z in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15DAC6E5236727C50082FC3F /* iDownload.z */; };
+		15E8B765236CFB450014BC7F /* PwnUSBImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8B764236CFB450014BC7F /* PwnUSBImplementation.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		150A1E9B235B848B00B900C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 150A1E96235B848B00B900C5 /* iStrap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 150B9C1623578DE4002CB0CB;
+			remoteInfo = DO_NOT_USE;
+		};
+		150A1E9D235B84A000B900C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 150A1E96235B848B00B900C5 /* iStrap.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 150B9C0623578571002CB0CB;
+			remoteInfo = iStrap;
+		};
+		150A1EB7235B93C600B900C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15A8B9B82354F5BE00574782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 150A1EB3235B912800B900C5;
+			remoteInfo = Shellcode;
+		};
+		15DAC6E0236725AB0082FC3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15DAC6DB236725AB0082FC3F /* iDownload.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1557A3B5236624CF0072A036;
+			remoteInfo = macOS_test;
+		};
+		15DAC6E3236727AD0082FC3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15DAC6DB236725AB0082FC3F /* iDownload.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1557A3A4236623B20072A036;
+			remoteInfo = iDownload;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		150A1E9F235B84B200B900C5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = shellcode;
+			dstSubfolderSpec = 16;
+			files = (
+				150A1ED3235BA36D00B900C5 /* iStrap@4x.bin in CopyFiles */,
+				150A1ED4235BA36D00B900C5 /* t8010_t8011_iStrap_loader.bin in CopyFiles */,
+				150A1ED5235BA36D00B900C5 /* iStrap@2x.bin in CopyFiles */,
+				150A1EBD235B940D00B900C5 /* checkm8_arm64.bin in CopyFiles */,
+				150A1EBE235B940D00B900C5 /* usb_0xA1_2_arm64.bin in CopyFiles */,
+				150A1EBF235B940D00B900C5 /* t8010_t8011_disable_wxn_arm64.bin in CopyFiles */,
+				15DAC6E6236727C50082FC3F /* iDownload.z in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15A9625123E7205400831666 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				15A9625223E7206300831666 /* README.md in CopyFiles */,
+				15A9625323E7206300831666 /* 3rdParty.txt in CopyFiles */,
+				15A9625423E7206300831666 /* LICENSE in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		150A1E96235B848B00B900C5 /* iStrap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iStrap.xcodeproj; path = iStrap/iStrap.xcodeproj; sourceTree = "<group>"; };
+		150A1EAB235B901800B900C5 /* t8010_t8011_disable_wxn_arm64.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = t8010_t8011_disable_wxn_arm64.S; sourceTree = "<group>"; };
+		150A1EAC235B901800B900C5 /* usb_0xA1_2_arm64.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = usb_0xA1_2_arm64.S; sourceTree = "<group>"; };
+		150A1EAD235B901900B900C5 /* checkm8_arm64.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = checkm8_arm64.S; sourceTree = "<group>"; };
+		150A1EB1235B902700B900C5 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		150A1EB9235B93DF00B900C5 /* usb_0xA1_2_arm64.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = usb_0xA1_2_arm64.bin; sourceTree = "<group>"; };
+		150A1EBA235B93DF00B900C5 /* checkm8_arm64.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = checkm8_arm64.bin; sourceTree = "<group>"; };
+		150A1EBB235B93E000B900C5 /* t8010_t8011_disable_wxn_arm64.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = t8010_t8011_disable_wxn_arm64.bin; sourceTree = "<group>"; };
+		150A1ED0235BA36C00B900C5 /* iStrap@4x.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = "iStrap@4x.bin"; path = "iStrap/build/iStrap@4x.bin"; sourceTree = "<group>"; };
+		150A1ED1235BA36D00B900C5 /* t8010_t8011_iStrap_loader.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = t8010_t8011_iStrap_loader.bin; path = iStrap/build/t8010_t8011_iStrap_loader.bin; sourceTree = "<group>"; };
+		150A1ED2235BA36D00B900C5 /* iStrap@2x.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = "iStrap@2x.bin"; path = "iStrap/build/iStrap@2x.bin"; sourceTree = "<group>"; };
+		15A8B9C02354F5BE00574782 /* Fugu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Fugu; sourceTree = BUILT_PRODUCTS_DIR; };
+		15A8B9CA2354F5D000574782 /* StatusIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusIndicator.swift; sourceTree = "<group>"; };
+		15A8B9CB2354F5D000574782 /* Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
+		15A8B9CC2354F5D000574782 /* CommandLineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLineParser.swift; sourceTree = "<group>"; };
+		15A8B9CD2354F5D000574782 /* utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		15A8B9CE2354F5D000574782 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		15A8B9EA2354F60A00574782 /* PwnUSB_IOKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PwnUSB_IOKit.swift; sourceTree = "<group>"; };
+		15A8B9EB2354F60A00574782 /* PwnUSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PwnUSB.swift; sourceTree = "<group>"; };
+		15A8B9EC2354F60A00574782 /* DeviceConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceConfig.swift; sourceTree = "<group>"; };
+		15A8B9EE2354F60A00574782 /* rmsigchks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rmsigchks.swift; sourceTree = "<group>"; };
+		15A8B9EF2354F60A00574782 /* pwn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pwn.swift; sourceTree = "<group>"; };
+		15A8B9F02354F60A00574782 /* iStrap_module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iStrap_module.swift; sourceTree = "<group>"; };
+		15A8B9F22354F60A00574782 /* SimpleUSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleUSB.swift; sourceTree = "<group>"; };
+		15A8B9F32354F60A00574782 /* USBAbstraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USBAbstraction.swift; sourceTree = "<group>"; };
+		15A8B9F42354F60A00574782 /* IOKitUSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOKitUSB.swift; sourceTree = "<group>"; };
+		15A8BA082354F98F00574782 /* Fugu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fugu-Bridging-Header.h"; sourceTree = "<group>"; };
+		15A8BA11235512F200574782 /* lzss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lzss.swift; sourceTree = "<group>"; };
+		15A8BA13235514D300574782 /* lzss.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzss.c; sourceTree = "<group>"; };
+		15A8BA152355187300574782 /* lzss_module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lzss_module.swift; sourceTree = "<group>"; };
+		15A9624C23E6FF0700831666 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		15A9624D23E7135F00831666 /* 3rdParty.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 3rdParty.txt; sourceTree = "<group>"; };
+		15A9624E23E714B000831666 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		15A9625023E7202C00831666 /* install_sileo.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = install_sileo.py; sourceTree = "<group>"; };
+		15B5F1722358C6D3006BEE36 /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "USB/libUSB/lib/libusb-1.0.a"; sourceTree = "<group>"; };
+		15DAC6DB236725AB0082FC3F /* iDownload.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iDownload.xcodeproj; path = iDownload/iDownload.xcodeproj; sourceTree = "<group>"; };
+		15DAC6E5236727C50082FC3F /* iDownload.z */ = {isa = PBXFileReference; lastKnownFileType = file; name = iDownload.z; path = iDownload/build/iDownload.z; sourceTree = "<group>"; };
+		15E8B764236CFB450014BC7F /* PwnUSBImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwnUSBImplementation.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		15A8B9BD2354F5BE00574782 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		150A1E97235B848B00B900C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				150A1E9C235B848B00B900C5 /* DO_NOT_USE */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		150A1EA9235B854D00B900C5 /* Deps */ = {
+			isa = PBXGroup;
+			children = (
+				15DAC6E5236727C50082FC3F /* iDownload.z */,
+				150A1ED2235BA36D00B900C5 /* iStrap@2x.bin */,
+				150A1ED0235BA36C00B900C5 /* iStrap@4x.bin */,
+				150A1ED1235BA36D00B900C5 /* t8010_t8011_iStrap_loader.bin */,
+			);
+			name = Deps;
+			sourceTree = "<group>";
+		};
+		150A1EAA235B8FA300B900C5 /* Shellcode */ = {
+			isa = PBXGroup;
+			children = (
+				150A1EB1235B902700B900C5 /* Makefile */,
+				150A1EAD235B901900B900C5 /* checkm8_arm64.S */,
+				150A1EAC235B901800B900C5 /* usb_0xA1_2_arm64.S */,
+				150A1EAB235B901800B900C5 /* t8010_t8011_disable_wxn_arm64.S */,
+				150A1EBC235B93F700B900C5 /* Build */,
+			);
+			path = Shellcode;
+			sourceTree = "<group>";
+		};
+		150A1EBC235B93F700B900C5 /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				150A1EBA235B93DF00B900C5 /* checkm8_arm64.bin */,
+				150A1EB9235B93DF00B900C5 /* usb_0xA1_2_arm64.bin */,
+				150A1EBB235B93E000B900C5 /* t8010_t8011_disable_wxn_arm64.bin */,
+			);
+			name = Build;
+			sourceTree = "<group>";
+		};
+		15A8B9B72354F5BE00574782 = {
+			isa = PBXGroup;
+			children = (
+				15A9624C23E6FF0700831666 /* README.md */,
+				15A9624E23E714B000831666 /* LICENSE */,
+				15A9624D23E7135F00831666 /* 3rdParty.txt */,
+				15A9625023E7202C00831666 /* install_sileo.py */,
+				150A1E96235B848B00B900C5 /* iStrap.xcodeproj */,
+				15DAC6DB236725AB0082FC3F /* iDownload.xcodeproj */,
+				15A8B9E92354F60A00574782 /* checkm8 */,
+				15A8B9F12354F60A00574782 /* USB */,
+				15A8BA10235512C600574782 /* Image Manipulation */,
+				15A8B9ED2354F60A00574782 /* Modules */,
+				15A8B9C22354F5BE00574782 /* Fugu */,
+				150A1EAA235B8FA300B900C5 /* Shellcode */,
+				150A1EA9235B854D00B900C5 /* Deps */,
+				15A8B9C12354F5BE00574782 /* Products */,
+				15A8BA0B2354FEC400574782 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		15A8B9C12354F5BE00574782 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15A8B9C02354F5BE00574782 /* Fugu */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		15A8B9C22354F5BE00574782 /* Fugu */ = {
+			isa = PBXGroup;
+			children = (
+				15A8B9CE2354F5D000574782 /* main.swift */,
+				15A8B9CC2354F5D000574782 /* CommandLineParser.swift */,
+				15A8B9CD2354F5D000574782 /* utils.swift */,
+				15A8B9CB2354F5D000574782 /* Struct.swift */,
+				15A8B9CA2354F5D000574782 /* StatusIndicator.swift */,
+				15A8BA082354F98F00574782 /* Fugu-Bridging-Header.h */,
+			);
+			path = Fugu;
+			sourceTree = "<group>";
+		};
+		15A8B9E92354F60A00574782 /* checkm8 */ = {
+			isa = PBXGroup;
+			children = (
+				15A8B9EB2354F60A00574782 /* PwnUSB.swift */,
+				15E8B764236CFB450014BC7F /* PwnUSBImplementation.swift */,
+				15A8B9EA2354F60A00574782 /* PwnUSB_IOKit.swift */,
+				15A8B9EC2354F60A00574782 /* DeviceConfig.swift */,
+			);
+			path = checkm8;
+			sourceTree = "<group>";
+		};
+		15A8B9ED2354F60A00574782 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				15A8B9EE2354F60A00574782 /* rmsigchks.swift */,
+				15A8B9EF2354F60A00574782 /* pwn.swift */,
+				15A8B9F02354F60A00574782 /* iStrap_module.swift */,
+				15A8BA152355187300574782 /* lzss_module.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		15A8B9F12354F60A00574782 /* USB */ = {
+			isa = PBXGroup;
+			children = (
+				15A8B9F22354F60A00574782 /* SimpleUSB.swift */,
+				15A8B9F32354F60A00574782 /* USBAbstraction.swift */,
+				15A8B9F42354F60A00574782 /* IOKitUSB.swift */,
+			);
+			path = USB;
+			sourceTree = "<group>";
+		};
+		15A8BA0B2354FEC400574782 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15B5F1722358C6D3006BEE36 /* libusb-1.0.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		15A8BA10235512C600574782 /* Image Manipulation */ = {
+			isa = PBXGroup;
+			children = (
+				15A8BA11235512F200574782 /* lzss.swift */,
+				15A8BA13235514D300574782 /* lzss.c */,
+			);
+			path = "Image Manipulation";
+			sourceTree = "<group>";
+		};
+		15DAC6DC236725AB0082FC3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15DAC6E1236725AB0082FC3F /* macOS_test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		150A1EB3235B912800B900C5 /* Shellcode */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 150A1EB4235B912800B900C5 /* Build configuration list for PBXLegacyTarget "Shellcode" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "$(SRCROOT)/Shellcode";
+			dependencies = (
+			);
+			name = Shellcode;
+			passBuildSettingsInEnvironment = 0;
+			productName = Shellcode;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		15A8B9BF2354F5BE00574782 /* Fugu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15A8B9C72354F5BE00574782 /* Build configuration list for PBXNativeTarget "Fugu" */;
+			buildPhases = (
+				15A8B9BC2354F5BE00574782 /* Sources */,
+				15A8B9BD2354F5BE00574782 /* Frameworks */,
+				150A1E9F235B84B200B900C5 /* CopyFiles */,
+				15A9625123E7205400831666 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15DAC6E4236727AD0082FC3F /* PBXTargetDependency */,
+				150A1EB8235B93C600B900C5 /* PBXTargetDependency */,
+				150A1E9E235B84A000B900C5 /* PBXTargetDependency */,
+			);
+			name = Fugu;
+			productName = Fugu;
+			productReference = 15A8B9C02354F5BE00574782 /* Fugu */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		15A8B9B82354F5BE00574782 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Linus Henze";
+				TargetAttributes = {
+					150A1EB3235B912800B900C5 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					15A8B9BF2354F5BE00574782 = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+					};
+				};
+			};
+			buildConfigurationList = 15A8B9BB2354F5BE00574782 /* Build configuration list for PBXProject "Fugu" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 15A8B9B72354F5BE00574782;
+			productRefGroup = 15A8B9C12354F5BE00574782 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 15DAC6DC236725AB0082FC3F /* Products */;
+					ProjectRef = 15DAC6DB236725AB0082FC3F /* iDownload.xcodeproj */;
+				},
+				{
+					ProductGroup = 150A1E97235B848B00B900C5 /* Products */;
+					ProjectRef = 150A1E96235B848B00B900C5 /* iStrap.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				15A8B9BF2354F5BE00574782 /* Fugu */,
+				150A1EB3235B912800B900C5 /* Shellcode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		150A1E9C235B848B00B900C5 /* DO_NOT_USE */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = DO_NOT_USE;
+			remoteRef = 150A1E9B235B848B00B900C5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		15DAC6E1236725AB0082FC3F /* macOS_test */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = macOS_test;
+			remoteRef = 15DAC6E0236725AB0082FC3F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		15A8B9BC2354F5BE00574782 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15A8B9D02354F5D000574782 /* Struct.swift in Sources */,
+				15A8B9F62354F60A00574782 /* PwnUSB.swift in Sources */,
+				15A8BA12235512F200574782 /* lzss.swift in Sources */,
+				15E8B765236CFB450014BC7F /* PwnUSBImplementation.swift in Sources */,
+				15A8B9D32354F5D000574782 /* main.swift in Sources */,
+				15A8BA162355187300574782 /* lzss_module.swift in Sources */,
+				15A8B9F72354F60A00574782 /* DeviceConfig.swift in Sources */,
+				15A8B9FA2354F60A00574782 /* iStrap_module.swift in Sources */,
+				15A8B9F82354F60A00574782 /* rmsigchks.swift in Sources */,
+				15A8B9FC2354F60A00574782 /* USBAbstraction.swift in Sources */,
+				15A8B9FD2354F60A00574782 /* IOKitUSB.swift in Sources */,
+				15A8B9CF2354F5D000574782 /* StatusIndicator.swift in Sources */,
+				15A8B9D12354F5D000574782 /* CommandLineParser.swift in Sources */,
+				15A8B9F92354F60A00574782 /* pwn.swift in Sources */,
+				15A8B9D22354F5D000574782 /* utils.swift in Sources */,
+				15A8B9FB2354F60A00574782 /* SimpleUSB.swift in Sources */,
+				15A8B9F52354F60A00574782 /* PwnUSB_IOKit.swift in Sources */,
+				15A8BA14235514D300574782 /* lzss.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		150A1E9E235B84A000B900C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iStrap;
+			targetProxy = 150A1E9D235B84A000B900C5 /* PBXContainerItemProxy */;
+		};
+		150A1EB8235B93C600B900C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 150A1EB3235B912800B900C5 /* Shellcode */;
+			targetProxy = 150A1EB7235B93C600B900C5 /* PBXContainerItemProxy */;
+		};
+		15DAC6E4236727AD0082FC3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iDownload;
+			targetProxy = 15DAC6E3236727AD0082FC3F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		150A1EB5235B912800B900C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		150A1EB6235B912800B900C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		15A8B9C52354F5BE00574782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		15A8B9C62354F5BE00574782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		15A8B9C82354F5BE00574782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fugu/Fugu-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		15A8B9C92354F5BE00574782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fugu/Fugu-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		150A1EB4235B912800B900C5 /* Build configuration list for PBXLegacyTarget "Shellcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				150A1EB5235B912800B900C5 /* Debug */,
+				150A1EB6235B912800B900C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15A8B9BB2354F5BE00574782 /* Build configuration list for PBXProject "Fugu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15A8B9C52354F5BE00574782 /* Debug */,
+				15A8B9C62354F5BE00574782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15A8B9C72354F5BE00574782 /* Build configuration list for PBXNativeTarget "Fugu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15A8B9C82354F5BE00574782 /* Debug */,
+				15A8B9C92354F5BE00574782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 15A8B9B82354F5BE00574782 /* Project object */;
+}
