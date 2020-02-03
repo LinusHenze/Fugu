@@ -600,6 +600,32 @@ void handleConnection(int socket) {
                                         char *args[] = { "/usr/bin/dpkg", "-i", "/sileo.deb", "/cydia.deb", "/swift.deb", NULL };
                                         runCommand(f, args);
                                         
+                                        // Create /var/lib/dpkg/available
+                                        char *args_touch[] = { "/usr/bin/touch", "/var/lib/dpkg/available", NULL };
+                                        runCommand(f, args_touch);
+                                        
+                                        fd = open("/MobileSubstrate.deb", O_RDONLY);
+                                        if (fd != -1) {
+                                            close(fd);
+                                            
+                                            fd = open("/SafeMode.deb", O_RDONLY);
+                                            if (fd != -1) {
+                                                close(fd);
+                                                
+                                                fprintf(f, "Removing Substrate Compatibility Layer...\r\n");
+                                                fflush(f);
+                                                
+                                                char *args[] = { "/usr/bin/apt-get", "remove", "-y", "mobilesubstrate", "com.saurik.substrate.safemode", NULL };
+                                                runCommand(f, args);
+                                                
+                                                fprintf(f, "Installing MobileSubstrate...\r\n");
+                                                fflush(f);
+                                                
+                                                char *args2[] = { "/usr/bin/dpkg", "-i", "/MobileSubstrate.deb", "/SafeMode.deb", NULL };
+                                                runCommand(f, args2);
+                                            }
+                                        }
+                                        
                                         fprintf(f, "Adding chimera repo...\r\n");
                                         fflush(f);
                                         
@@ -692,6 +718,23 @@ int main(int argc, char **argv) {
                 // Child
                 char *args[] = { "/bin/bash", "-c", "/usr/bin/launchctl load /Library/LaunchDaemons/*", NULL };
                 execve("/bin/bash", args, environ);
+                exit(-1);
+            }
+            
+            // Parent
+            waitpid(pid, NULL, 0);
+        }
+        
+        // If MobileSubstrate is installed, run it!
+        fd = open("/usr/libexec/substrate", O_RDONLY);
+        if (fd != -1) {
+            close(fd);
+            
+            pid_t pid = fork();
+            if (pid == 0) {
+                // Child
+                char *args[] = { "/usr/libexec/substrate", NULL };
+                execve("/usr/libexec/substrate", args, environ);
                 exit(-1);
             }
             

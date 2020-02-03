@@ -40,9 +40,9 @@ if not os.path.exists("bootstrap.tar.gz"):
     print("Downloading bootstrap.tar.gz...")
     download("bootstrap.tar.gz")
 
-if not os.path.exists("org.coolstar.sileo_1.1.5_iphoneos-arm.deb"):
+if not os.path.exists("org.coolstar.sileo_1.6.0_iphoneos-arm.deb"):
     print("Downloading Sileo...")
-    download("org.coolstar.sileo_1.1.5_iphoneos-arm.deb")
+    download("org.coolstar.sileo_1.6.0_iphoneos-arm.deb")
     
 if not os.path.exists("org.swift.libswift_5.0-electra2_iphoneos-arm.deb"):
     print("Downloading Swift...")
@@ -51,6 +51,14 @@ if not os.path.exists("org.swift.libswift_5.0-electra2_iphoneos-arm.deb"):
 if not os.path.exists("cydia_2.3_iphoneos-arm.deb"):
     print("Downloading Cydia Compatibility Package...")
     download("cydia_2.3_iphoneos-arm.deb")
+
+if not os.path.exists("mobilesubstrate_0.9.7100~b4_iphoneos-arm.deb"):
+    print("Downloading MobileSubstrate...")
+    download("mobilesubstrate_0.9.7100~b4_iphoneos-arm.deb")
+    
+if not os.path.exists("com.saurik.substrate.safemode_0.9.6003_iphoneos-arm.deb"):
+    print("Downloading Substrate Safemode...")
+    download("com.saurik.substrate.safemode_0.9.6003_iphoneos-arm.deb")
 
 print("Launching iproxy")
 
@@ -86,7 +94,7 @@ try:
     
     print("Uploading Sileo...")
     
-    with open("org.coolstar.sileo_1.1.5_iphoneos-arm.deb", "rb") as f:
+    with open("org.coolstar.sileo_1.6.0_iphoneos-arm.deb", "rb") as f:
         data = f.read()
     
     upload(r, "/sileo.deb", data)
@@ -104,6 +112,20 @@ try:
         data = f.read()
     
     upload(r, "/cydia.deb", data)
+    
+    print("Uploading MobileSubstrate...")
+    
+    with open("mobilesubstrate_0.9.7100~b4_iphoneos-arm.deb", "rb") as f:
+        data = f.read()
+    
+    upload(r, "/MobileSubstrate.deb", data)
+    
+    print("Uploading Substrate Safemode...")
+    
+    with open("com.saurik.substrate.safemode_0.9.6003_iphoneos-arm.deb", "rb") as f:
+        data = f.read()
+    
+    upload(r, "/SafeMode.deb", data)
     
     print("Done uploading!")
     
