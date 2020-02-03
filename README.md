@@ -1,7 +1,7 @@
 # Fugu
 Fugu is the first open source jailbreak tool based on the checkm8 exploit.  
   
-__UPDATE:__ NewTerm and other Apps that do not rely on tweak injection should work now.
+__UPDATE:__ NewTerm and other Apps that do not rely on tweak injection should work now.  
 __IMPORTANT:__ This jailbreak is currently in development and only meant to be used by developers. While it is possible to install Sileo (or Cydia), tweaks (and probably other stuff) won't work. Additionally, although the root filesystem is mounted read/write, __rebooting into non-jailbroken mode will reset the root filesystem back to stock!__
 
 # Supported Devices
