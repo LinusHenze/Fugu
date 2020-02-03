@@ -1,11 +1,11 @@
 # Fugu
 Fugu is the first open source jailbreak tool based on the checkm8 exploit.  
   
-__IMPORTANT:__ This jailbreak is currently in development and only meant to be used by developers. While it is possible to install Sileo (or Cydia), most stuff installed through them won't work. Additionally, although the root filesystem is mounted read/write, __rebooting into non-jailbroken mode will reset the root filesystem back to stock!__
+__UPDATE:__ NewTerm and other Apps that do not rely on tweak injection should work now.
+__IMPORTANT:__ This jailbreak is currently in development and only meant to be used by developers. While it is possible to install Sileo (or Cydia), tweaks (and probably other stuff) won't work. Additionally, although the root filesystem is mounted read/write, __rebooting into non-jailbroken mode will reset the root filesystem back to stock!__
 
 # Supported Devices
-Currently, the iPad Pro (2017) is the only officially supported device (on iOS 13 - 13.3.1).  
-iPhone 7 should be supported as well, but is currently untested. (Please test!)
+Currently, the iPad Pro (2017) and iPhone 7 are the only officially supported devices (on iOS 13 - 13.3.1).  
 
 # Building
 _Note that you can also download a precompiled version from the releases tab._  

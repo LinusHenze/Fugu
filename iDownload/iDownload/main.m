@@ -683,14 +683,14 @@ int main(int argc, char **argv) {
     int fd = open("/bin/bash", O_RDONLY);
     if (fd != -1) {
         close(fd);
-        fd = open("/bin/launchctl", O_RDONLY);
+        fd = open("/usr/bin/launchctl", O_RDONLY);
         if (fd != -1) {
             close(fd);
             
             pid_t pid = fork();
             if (pid == 0) {
                 // Child
-                char *args[] = { "/bin/bash", "-c", "/bin/launchctl load /Library/LaunchDaemons/*", NULL };
+                char *args[] = { "/bin/bash", "-c", "/usr/bin/launchctl load /Library/LaunchDaemons/*", NULL };
                 execve("/bin/bash", args, environ);
                 exit(-1);
             }

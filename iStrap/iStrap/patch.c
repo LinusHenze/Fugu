@@ -146,6 +146,57 @@ void *findDevfsFunc(void *start, void *end) {
     while (1) {}
 }
 
+void *find_cs_invalid_page(void *start, void *end) {
+    // Looks like this:
+    // cbz        wA, label
+    // orr        wB,wB,#0x200
+    // str        wB,[x??, #??]
+    // label:
+    // adrp       xC,??
+    // ldr        wD,[xC, #??]
+    // cbz        wD, label2
+    // orr        wE,wE,#0x100
+    // str        wE,[x??, #??]
+    // label2:
+    
+    uint32_t *ptr = (uint32_t*) start;
+    while (ptr < (uint32_t*) end) {
+        if ((*ptr & 0xFFFFFFE0) == 0x34000060) {
+            // Found cbz
+            int orr1_regA = ptr[1] & 0x1F;
+            int orr1_regB = (ptr[1] >> 5) & 0x1F;
+            if (orr1_regA == orr1_regB && (ptr[1] & 0xFFFFFC00) == 0x32170000) {
+                // Found first orr
+                int str1_reg = ptr[2] & 0x1F;
+                if (str1_reg == orr1_regA && (ptr[2] & 0xFFC00000) == 0xB9000000) {
+                    // Found first store
+                    // Skip two instructions
+                    if ((ptr[5] & 0xFFFFFFE0) == 0x34000060) {
+                        // Found second cbz
+                        int orr2_regA = ptr[6] & 0x1F;
+                        int orr2_regB = (ptr[6] >> 5) & 0x1F;
+                        if (orr2_regA == orr2_regB && (ptr[6] & 0xFFFFFC00) == 0x32180000) {
+                            // Found second orr
+                            int str2_reg = ptr[7] & 0x1F;
+                            if (str2_reg == orr2_regA && (ptr[7] & 0xFFC00000) == 0xB9000000) {
+                                // Found second store
+                                // This is our function!
+                                return (void*) ((uintptr_t) function_find_start((void*) ptr, start) - 4);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        ptr++;
+    }
+    
+    puts("!!! FAILED TO FIND cs_invalid_page !!!");
+    puts("!!!           HANGING NOW          !!!");
+    while (1) {}
+}
+
 struct load_command *findLoadCommandOfType(uint8_t *kernel, struct load_command *begin, uint32_t type) {
     struct mach_header_64 *header = (struct mach_header_64*) kernel;
     if (header->magic != MH_MAGIC_64) {
@@ -261,7 +312,7 @@ void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadL
     
     puts("[*] Searching for string locations...");
     
-    sequence patchSequences[4];
+    sequence patchSequences[5];
     patchSequences[0].sequence = "%s: only allowed process can check the trust cache\n";
     patchSequences[0].location = NULL;
     patchSequences[0].size = 51;
@@ -282,7 +333,12 @@ void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadL
     patchSequences[3].location = NULL;
     patchSequences[3].size = 66;
     
-    bool sqFound = findSequences((void*) kStrings_kext->start, kStrings_kext->size, &patchSequences[0], 4);
+    // AMFI unsigned 3
+    patchSequences[4].sequence = "%s: Hash type is not SHA256 (%u) but %u";
+    patchSequences[4].location = NULL;
+    patchSequences[4].size = 39;
+    
+    bool sqFound = findSequences((void*) kStrings_kext->start, kStrings_kext->size, &patchSequences[0], 5);
     if (!sqFound) {
         puts("!!! FAILED TO FIND STRING LOCATIONS !!!");
         puts("!!!           HANGING NOW           !!!");
@@ -376,6 +432,64 @@ void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadL
     xrefExecChk[0] = adrp;
     xrefExecChk[1] = add;
     
+    // AMFI unsigned 3
+    void *xref_hash_type = find_xref_to((void*) kText_kext->start, kTextKEXTEnd, (uint64_t) patchSequences[4].location);
+    if (!xref_hash_type) {
+        puts("!!! FAILED TO FIND AMFI HASHTYPE FUNC !!!");
+        puts("!!!            HANGING NOW            !!!");
+        while (1) {}
+    }
+    
+    void *hash_type_start = (void*) ((uintptr_t) function_find_start(xref_hash_type, (void*) kText_kext->start) - 4);
+    if (!hash_type_start) {
+        puts("!!! FAILED TO FIND AMFI HASHTYPE FUNC !!!");
+        puts("!!!            HANGING NOW            !!!");
+        while (1) {}
+    }
+    
+    cpyMem(hash_type_start, "\x20\x00\x80\x52\xc0\x03\x5f\xd6", 8);
+    
+    // Library validation
+    
+    // All libraries have a CDHash ;)
+    void *csfg_get_cdhash = RESOLVE_TEXT_SYMBOL("_csfg_get_cdhash");
+    if (!csfg_get_cdhash) {
+        puts("!!! FAILED TO FIND csfg_get_cdhash !!!");
+        puts("!!!           HANGING NOW          !!!");
+        while (1) {}
+    }
+    
+    cpyMem(csfg_get_cdhash, "\x21\x00\x80\xd2\x41\x00\x00\xf9\xc0\x03\x5f\xd6", 12);
+    
+    // All libraries are platform binaries ;)
+    void *csfg_get_platform_binary = RESOLVE_TEXT_SYMBOL("_csfg_get_platform_binary");
+    if (!csfg_get_platform_binary) {
+        puts("!!! FAILED TO FIND csfg_get_platform_binary !!!");
+        puts("!!!               HANGING NOW               !!!");
+        while (1) {}
+    }
+    
+    cpyMem(csfg_get_platform_binary, "\x20\x00\x80\x52\xc0\x03\x5f\xd6", 8);
+    
+    // Allow invalid pages
+    // Kill cs_invalid_page
+    // Should be around cs_require_lv
+    // Compilers are lazy ;)
+    void *cs_require_lv = RESOLVE_TEXT_SYMBOL("_cs_require_lv");
+    void *csInvalidPage = find_cs_invalid_page((void*) ((uintptr_t) cs_require_lv - 0x1000), (void*) ((uintptr_t) cs_require_lv + 0x1000));
+    cpyMem(csInvalidPage, "\x00\x00\x80\x52\xc0\x03\x5f\xd6", 8);
+    
+    // FIXME: Do we need this?
+    void *isdyldsharedcache = RESOLVE_TEXT_SYMBOL("_vnode_isdyldsharedcache");
+    if (!isdyldsharedcache) {
+        puts("!!! FAILED TO FIND vnode_isdyldsharedcache !!!");
+        puts("!!!               HANGING NOW              !!!");
+        while (1) {}
+    }
+    
+    cpyMem(isdyldsharedcache, "\x20\x00\x80\x52\xc0\x03\x5f\xd6", 8);
+    
+    // FIXME: Do we need this?
     void *canHazDebugger = RESOLVE_TEXT_SYMBOL("_PE_i_can_has_debugger");
     if (!canHazDebugger) {
         puts("!!! FAILED TO FIND PE_i_can_has_debugger !!!");
@@ -383,7 +497,7 @@ void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadL
         while (1) {}
     }
     
-    cpyMem(canHazDebugger, "\x20\x00\x80\x52\xc0\x03\x5f\xd6", 8);
+    cpyMem(canHazDebugger, "\x00\x00\x80\x52\xc0\x03\x5f\xd6", 8);
     
     // Now do the rootfs r/w patch
     sequence patchSequences_krn[2];
