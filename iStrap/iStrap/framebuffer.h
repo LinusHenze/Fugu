@@ -23,6 +23,6 @@ void drawChar(int x, int y, char ch);
 int printf(const char * restrict format, ...) __printflike(1, 2);
 int puts(const char *str);
 void findAppleLogo(int *xStart, int *yStart, int *xEnd, int *yEnd);
-void checkerboardInterleaved(int startX, int startY, int endX, int endY, uint32_t bgColor);
+void checkerboardInterleaved(int startX, int startY, int endX, int endY);
 
 #endif /* framebuffer_h */

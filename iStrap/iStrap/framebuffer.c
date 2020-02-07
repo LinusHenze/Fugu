@@ -12,7 +12,6 @@
 
 #include <stdarg.h>
 
-bool bwInversion = false;
 uint32_t bgColor = 0;
 
 int printfCurrentX = 0;
@@ -26,14 +25,9 @@ void initFramebuffer(boot_args *args) {
     uint32_t *address = (uint32_t*) video->v_baseAddr;
     
     bgColor = address[0];
-    
-    if (bgColor != 0) {
-        // This is a white device
-        bwInversion = true;
-    }
 }
 
-// Pixel functions automatically draw 4x
+// Pixel functions automatically draw 2x/4x
 void drawPixelXY(int x, int y, uint32_t color) {
 #if SCALE_FACTOR == 2
     if (x >= video->v_width/2 || y >= video->v_height/2) {
@@ -127,7 +121,7 @@ void rewriteColor(uint8_t or, uint8_t og, uint8_t ob, uint8_t r, uint8_t g, uint
     
     for (int y = 0; y < video->v_height; y++) {
         for (int x = 0; x < video->v_width; x++) {
-            if ((videoAddress[(y * ((int) video->v_rowBytes / 4)) + x] >> 8) == bgColor) {
+            if (videoAddress[(y * ((int) video->v_rowBytes / 4)) + x] == bgColor) {
                 videoAddress[(y * ((int) video->v_rowBytes / 4)) + x] = color;
             }
         }
@@ -246,38 +240,28 @@ int puts(const char *str) {
 }
 #pragma clang optimize on
 
+// On devices with a white boot screen, this is effectively rowHasBlack
 bool rowHasWhite(int y) {
     uint32_t rowSize = (uint32_t) video->v_rowBytes/4;
     uint32_t *address = (uint32_t*) video->v_baseAddr;
     
     for (int x = 0; x < video->v_width; x++) {
-        if (bwInversion) {
-            if (address[y * rowSize + x] >> 8 == 0) {
-                return true;
-            }
-        } else {
-            if (address[y * rowSize + x] >> 8 != 0) {
-                return true;
-            }
+        if (address[y * rowSize + x] != bgColor) {
+            return true;
         }
     }
     
     return false;
 }
 
+// On devices with a white boot screen, this is effectively columnHasBlack
 bool columnHasWhite(int x) {
     uint32_t rowSize = (uint32_t) video->v_rowBytes/4;
     uint32_t *address = (uint32_t*) video->v_baseAddr;
     
     for (int y = 0; y < video->v_width; y++) {
-        if (bwInversion) {
-            if (address[y * rowSize + x] >> 8 == 0) {
-                return true;
-            }
-        } else {
-            if (address[y * rowSize + x] >> 8 != 0) {
-                return true;
-            }
+        if (address[y * rowSize + x] != bgColor) {
+            return true;
         }
     }
     
@@ -314,8 +298,6 @@ void findAppleLogo(int *xStart, int *yStart, int *xEnd, int *yEnd) {
     *xEnd = x;
 }
 
-//#define CHECKERBOARD_SIZE 9
-
 const uint32_t colorStriping[] = {
     0x000FFC00,
     0x000FFC00,
@@ -328,9 +310,10 @@ const uint32_t colorStriping[] = {
     0x000003FF
 };
 
-void checkerboardInterleaved(int startX, int startY, int endX, int endY, uint32_t bgColor) {
+void checkerboardInterleaved(int startX, int startY, int endX, int endY) {
     bool startWithBlack = false;
-    int outerCounter = 0;
+    int outerCtr = 0;
+    
     uint32_t *address = (uint32_t*) video->v_baseAddr;
     uint32_t rowSize = (uint32_t) video->v_rowBytes/4;
     
@@ -339,11 +322,11 @@ void checkerboardInterleaved(int startX, int startY, int endX, int endY, uint32_
     int stripeY = (endY - startY)/(sizeof(colorStriping)/sizeof(colorStriping[0]));
     int yCounter = 0;
     
-    int CHECKERBOARD_SIZE = stripeY/4;
+    int checkerboard_size = stripeY/4;
     
     for (int y = startY; y <= endY; y++) {
-        if (++outerCounter == CHECKERBOARD_SIZE) {
-            outerCounter = 0;
+        if (++outerCtr == checkerboard_size) {
+            outerCtr = 0;
             startWithBlack = !startWithBlack;
             
             if (yCounter >= stripeY) {
@@ -359,14 +342,14 @@ void checkerboardInterleaved(int startX, int startY, int endX, int endY, uint32_
         int innerCtr = 0;
         
         for (int x = startX; x <= endX; x++) {
-            if (++innerCtr == CHECKERBOARD_SIZE) {
+            if (++innerCtr == checkerboard_size) {
                 innerCtr = 0;
                 isBlack = !isBlack;
             }
             
-            if (address[y * rowSize + x] >> 8 != bgColor) {
+            if (address[y * rowSize + x] != bgColor) {
                 if (isBlack) {
-                    address[y * rowSize + x] = 0;
+                    address[y * rowSize + x] = bgColor;
                 } else {
                     address[y * rowSize + x] = currentStripeColor;
                 }

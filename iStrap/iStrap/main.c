@@ -30,13 +30,11 @@ void simple_sleep() {
 }
 
 void __attribute__((section(".text.boot"))) main_iStrap(void *image, boot_args *args, void *iBoot_base, void *iBoot_end) {
-    uint32_t *fb = (uint32_t*) args->video.v_baseAddr;
-    
     initFramebuffer(args);
     
     int lgStartX, lgStartY, lgEndX, lgEndY = 0;
     findAppleLogo(&lgStartX, &lgStartY, &lgEndX, &lgEndY);
-    checkerboardInterleaved(lgStartX, lgStartY, lgEndX, lgEndY, fb[0]);
+    checkerboardInterleaved(lgStartX, lgStartY, lgEndX, lgEndY);
     
     puts("====================================");
     puts("         Welcome to iStrap!         ");
