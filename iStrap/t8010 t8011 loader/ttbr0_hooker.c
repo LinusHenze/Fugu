@@ -36,6 +36,8 @@ void patch_entry(uint64_t *ttbr0, size_t L2_idx, size_t L3_idx) {
         case 3: {
             // L3 Table
             uint64_t *L3_table = (uint64_t*) (l2Entry & 0xFFFFFFFFC000);
+            l2Entry &= 0x7800000000000000ULL;
+            ttbr0[L2_idx] = l2Entry;
             size_t L3_idx_start = L3_idx;
             
             for (size_t L3_idx = L3_idx_start; L3_idx < L3_idx_start+32; L3_idx++) {
