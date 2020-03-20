@@ -54,6 +54,10 @@
 	<true/>
 	<key>com.apple.private.ProvInfoIOKitUserClient.access</key>
 	<true/>
+	<key>com.apple.springboard.CFUserNotification</key>
+	<true/>
+	<key>com.apple.springboard.launchapplications</key>
+	<true/>
 	<key>com.apple.private.PurpleReverseProxy.allowed</key>
 	<true/>
 	<key>com.apple.private.apfs.trim-active-file</key>

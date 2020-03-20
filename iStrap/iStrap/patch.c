@@ -29,9 +29,10 @@ extern void setuid_patch_end(void);
 
 #define OFFSET_64(a, b) ((uint64_t) a - (uint64_t) b)
 
-// FIXME: These shouldn't be static
-#define TEXT_EXEC_BASE   0xFFFFFFF0070F0000ULL
+// FIXME: This shouldn't be static
 #define KERNEL_FULL_BASE (void*) 0x820000000ULL
+
+uintptr_t TEXT_EXEC_BASE = 0x0;
 
 void *findTCFunc(void *stringLoc, DTMemoryEntry *kText_kxt, DTMemoryEntry *kText_krnl) {
     void *kTextKEXTEnd = (void*) ((uintptr_t) kText_kxt->start + kText_kxt->size);
@@ -94,7 +95,19 @@ void *findRootmountallocCall(void *start, void *end, void *strLoc) {
         return NULL;
     }
     
+    bool isNewVersion = false;
+    
     while (vfs_mountroot < (uint32_t*) end) {
+        if (!isNewVersion) {
+            // Detect newer versions
+            uint32_t *branch = (uint32_t*) aarch64_emulate_b(*vfs_mountroot, (uint64_t) vfs_mountroot);
+            if (branch) {
+                // New version
+                vfs_mountroot = branch;
+                isNewVersion = true;
+            }
+        }
+        
         if (aarch64_emulate_bl(*vfs_mountroot, (uint64_t) vfs_mountroot)) {
             return vfs_mountroot;
         }
@@ -275,9 +288,28 @@ void *resolveSymbol(char *name) {
     return NULL;
 }
 
+void setTextExecBase() {
+    void *kernel_start = KERNEL_FULL_BASE;
+    while (*(uint32_t*) kernel_start != MH_MAGIC_64) {
+        kernel_start++;
+    }
+    
+    struct segment_command_64 *text_exec_seg = findSegmentLoadCommand(kernel_start, "__TEXT_EXEC");
+    if (!text_exec_seg) {
+        puts("!!! FAILED TO FIND TEXT_EXEC SECTION (KERNEL_FULL_BASE) !!!");
+        puts("!!!                     HANGING NOW                     !!!");
+        while (1) {}
+    }
+    
+    TEXT_EXEC_BASE = text_exec_seg->vmaddr;
+}
+
 #define RESOLVE_TEXT_SYMBOL(name) ((void*) ((uintptr_t) resolveSymbol(name) - (uintptr_t) TEXT_EXEC_BASE + (uintptr_t) kText->start))
 
 void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadLoc, size_t iDownloadSize) {
+    // Set TEXT_EXEC_BASE first
+    setTextExecBase();
+    
     DTMemoryEntry *kStrings = dt_lookup_memory_map(args, "Kernel-__TEXT");
     if (!kStrings) {
         puts("!!! FAILED TO FIND TEXT SECTION !!!");

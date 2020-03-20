@@ -28,4 +28,4 @@ DispatchQueue.global().async {
     ])
 }
 
-dispatchMain()
+CFRunLoopRun()

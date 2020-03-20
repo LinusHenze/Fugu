@@ -17,6 +17,13 @@ print("under certain conditions; See the LICENSE file for more information\n")
 print("           If you paid for this software, you got scammed          ")
 print("===================================================================\n")
 
+print("NOT REQUIRED ANYMORE")
+print("Fugu automatically installs all required files")
+print("This script might be updated for offline install")
+print("For now, use Fugu's online install")
+
+exit(-1)
+
 def upload(r, name, data):
     socket = r.get_socket()
     socket.sendall(b"write %s %d\n"%(name.encode(), len(data)))

@@ -217,6 +217,7 @@ final class IOKitUSB: USBDeviceImplementation {
         let nPort = IONotificationPortCreate(kIOMasterPortDefault)
         var source = IONotificationPortGetRunLoopSource(nPort)
         _ = deviceInterface.CreateDeviceAsyncEventSource(deviceInterfacePtrPtr, &source)
+        CFRunLoopAddSource(CFRunLoopGetMain(), source?.takeUnretainedValue(), CFRunLoopMode.commonModes)
     }
     
     deinit {

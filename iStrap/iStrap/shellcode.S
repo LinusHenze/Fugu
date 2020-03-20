@@ -8,8 +8,8 @@
 
 #define O_WRONLY    0x0001
 #define O_CREAT     0x0200
-#define    FWASWRITTEN    0x10000
-#define    IO_NOAUTH    0x8000
+#define FWASWRITTEN 0x10000
+#define IO_NOAUTH   0x8000
 
 .align 4
 .text

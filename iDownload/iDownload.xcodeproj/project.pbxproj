@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1557A3BD236624D60072A036 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1557A3AD236623F60072A036 /* main.m */; };
+		1591CDF023F0703700FAC98C /* install.m in Sources */ = {isa = PBXBuildFile; fileRef = 1591CDEF23F0703700FAC98C /* install.m */; };
+		1591CDF323F070A100FAC98C /* server.c in Sources */ = {isa = PBXBuildFile; fileRef = 1591CDF223F070A100FAC98C /* server.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +36,11 @@
 		1557A3AF236624580072A036 /* iDownload */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = iDownload; sourceTree = "<group>"; };
 		1557A3B0236624750072A036 /* iDownload.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iDownload.entitlements; sourceTree = "<group>"; };
 		1557A3B5236624CF0072A036 /* iDownload_macOS_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = iDownload_macOS_test; sourceTree = BUILT_PRODUCTS_DIR; };
+		1591CDEE23F0703700FAC98C /* install.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = install.h; sourceTree = "<group>"; };
+		1591CDEF23F0703700FAC98C /* install.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = install.m; sourceTree = "<group>"; };
+		1591CDF123F070A100FAC98C /* server.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = server.h; sourceTree = "<group>"; };
+		1591CDF223F070A100FAC98C /* server.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = server.c; sourceTree = "<group>"; };
+		1591CDF423F0719100FAC98C /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		15D3CBE6236640AC00D71E2D /* iDownload.z */ = {isa = PBXFileReference; lastKnownFileType = file; path = iDownload.z; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +82,11 @@
 			children = (
 				1557A3AC236623D90072A036 /* Makefile */,
 				1557A3AD236623F60072A036 /* main.m */,
+				1591CDEF23F0703700FAC98C /* install.m */,
+				1591CDEE23F0703700FAC98C /* install.h */,
+				1591CDF223F070A100FAC98C /* server.c */,
+				1591CDF123F070A100FAC98C /* server.h */,
+				1591CDF423F0719100FAC98C /* common.h */,
 				1557A3B0236624750072A036 /* iDownload.entitlements */,
 				150E2BF82367055F00611E9F /* xpc */,
 			);
@@ -177,6 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1557A3BD236624D60072A036 /* main.m in Sources */,
+				1591CDF323F070A100FAC98C /* server.c in Sources */,
+				1591CDF023F0703700FAC98C /* install.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
