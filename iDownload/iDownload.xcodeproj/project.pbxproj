@@ -41,6 +41,7 @@
 		1591CDF123F070A100FAC98C /* server.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = server.h; sourceTree = "<group>"; };
 		1591CDF223F070A100FAC98C /* server.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = server.c; sourceTree = "<group>"; };
 		1591CDF423F0719100FAC98C /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		15C1A64924254D9D00F8FA5C /* CFUserNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFUserNotification.h; sourceTree = "<group>"; };
 		15D3CBE6236640AC00D71E2D /* iDownload.z */ = {isa = PBXFileReference; lastKnownFileType = file; path = iDownload.z; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +88,7 @@
 				1591CDF223F070A100FAC98C /* server.c */,
 				1591CDF123F070A100FAC98C /* server.h */,
 				1591CDF423F0719100FAC98C /* common.h */,
+				15C1A64924254D9D00F8FA5C /* CFUserNotification.h */,
 				1557A3B0236624750072A036 /* iDownload.entitlements */,
 				150E2BF82367055F00611E9F /* xpc */,
 			);

@@ -6,6 +6,10 @@
 //  Copyright © 2020 Linus Henze. All rights reserved.
 //
 
+#ifdef iOS
+#include "CFUserNotification.h"
+#endif
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CFNetwork/CFNetwork.h>
