@@ -31,32 +31,19 @@ fileprivate func lzadler32(buffer: Data) -> UInt32 {
 extension Data {
     func lzssEncoded(extraData: Data = Data()) -> Data {
         let adler = lzadler32(buffer: self)
-        var data = Array<UInt8>(self)
-        let dataCount = data.count
         
-        let compressed = data.withUnsafeMutableBufferPointer { (ptr_src) -> Data in
-            var data_dst = Array<UInt8>(repeating: 0, count: dataCount)
-            let compressed_size = data_dst.withUnsafeMutableBufferPointer { (ptr_dst) -> Int in
-                let compressed_size = compress_lzss(ptr_dst.baseAddress!, UInt32(dataCount), ptr_src.baseAddress!, UInt32(dataCount))
-                return Int(compressed_size)
-            }
-            
-            return Data(data_dst.prefix(upTo: compressed_size))
-        }
+        let compressed = self.rawLzssEncoded()
         
-        let header = struct_pack(">4s4s4I360x", "comp", "lzss", adler, UInt32(dataCount), UInt32(compressed.count), 1 as UInt32)
+        let header = struct_pack(">4s4s4I360x", "comp", "lzss", adler, UInt32(self.count), UInt32(compressed.count), 1 as UInt32)
         
         return header + compressed + extraData
     }
     
     func rawLzssEncoded() -> Data {
-        var data = Array<UInt8>(self)
-        let dataCount = data.count
-        
-        let compressed = data.withUnsafeMutableBufferPointer { (ptr_src) -> Data in
-            var data_dst = Array<UInt8>(repeating: 0, count: dataCount)
-            let compressed_size = data_dst.withUnsafeMutableBufferPointer { (ptr_dst) -> Int in
-                let compressed_size = compress_lzss(ptr_dst.baseAddress!, UInt32(dataCount), ptr_src.baseAddress!, UInt32(dataCount))
+        let compressed = self.withUnsafeBytes { (ptr_src) -> Data in
+            var data_dst = Data(repeating: 0, count: self.count * 2)
+            let compressed_size = data_dst.withUnsafeMutableBytes { (ptr_dst) -> Int in
+                let compressed_size = compress_lzss(UnsafeMutablePointer<UInt8>(OpaquePointer(ptr_dst.baseAddress!)), UInt32(ptr_dst.count), UnsafeMutablePointer<UInt8>(OpaquePointer(ptr_src.baseAddress!)), UInt32(ptr_src.count))
                 return Int(compressed_size)
             }
             
