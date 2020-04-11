@@ -13,6 +13,6 @@
 
 #include "definitions.h"
 
-void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadLoc, size_t iDownloadSize);
+void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadLoc, size_t iDownloadSize, bool restoreFS);
 
 #endif /* patch_h */

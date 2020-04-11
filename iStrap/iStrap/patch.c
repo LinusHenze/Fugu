@@ -306,7 +306,7 @@ void setTextExecBase() {
 
 #define RESOLVE_TEXT_SYMBOL(name) ((void*) ((uintptr_t) resolveSymbol(name) - (uintptr_t) TEXT_EXEC_BASE + (uintptr_t) kText->start))
 
-void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadLoc, size_t iDownloadSize) {
+void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadLoc, size_t iDownloadSize, bool restoreFS) {
     // Set TEXT_EXEC_BASE first
     setTextExecBase();
     
@@ -379,8 +379,16 @@ void applyKernelPatches(boot_args *args, bool iDownloadPresent, void *iDownloadL
     
     puts("[+] Strings found!");
     
-    // Kill snapshots
-    cpyMem(patchSequences[1].location, "com.apple.os.update_", 21);
+    if (restoreFS) {
+        // Restore snapshot
+        cpyMem(patchSequences[1].location, "Fugu.orig.fs.backup-", 21);
+        puts("[*] Will restore root filesystem");
+        puts("[!] Disabling Jailbreak");
+        return;
+    } else {
+        // Kill snapshots temporarily
+        cpyMem(patchSequences[1].location, "com.apple.os.update_", 21);
+    }
     
     // First the pmap_lookup_in_static_trust_cache_0 patch
     // Kills code signature checks

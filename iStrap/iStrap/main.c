@@ -15,6 +15,7 @@
 
 CONFIG_VAR(iDownload_size, 0)
 CONFIG_VAR(boot_args_size, 1)
+CONFIG_VAR(force_restore_fs, 2)
 
 extern void appended_data_start();
 
@@ -93,7 +94,7 @@ void __attribute__((section(".text.boot"))) main_iStrap(void *image, boot_args *
     
     puts("[*] Applying kernel patches...");
     
-    applyKernelPatches(args, iDownload_size != 0, iDownload_loc, iDownload_realSize);
+    applyKernelPatches(args, iDownload_size != 0, iDownload_loc, iDownload_realSize, force_restore_fs != 0);
     
     puts("[+] Successfully patched kernel!");
     

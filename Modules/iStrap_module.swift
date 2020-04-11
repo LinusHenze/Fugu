@@ -10,6 +10,7 @@ import Foundation
 
 var iDownload_noinstall = false
 var globalBootArgs: Data? = nil
+var globalRestoreFS = false
 
 func iStrap_patchesFor(device: Int) -> [UInt64: [UInt8]] {
     var iDownload = Data()
@@ -23,12 +24,16 @@ func iStrap_patchesFor(device: Int) -> [UInt64: [UInt8]] {
         UInt64(iDownload.count),
         // Boot args size
         UInt64(globalBootArgs?.count ?? 0),
+        // Restore FS
+        globalRestoreFS ? 1 : 0
     ]) + appendedData
     let iStrap_4x = loadShellcode64(name: "iStrap@4x", constants: [
         // iDownload size
         UInt64(iDownload.count),
         // Boot args size
         UInt64(globalBootArgs?.count ?? 0),
+        // Restore FS
+        globalRestoreFS ? 1 : 0
     ]) + appendedData
     
     switch device {
@@ -91,6 +96,7 @@ class iStrapModule: CommandLineModule {
         CommandLineArgument(longVersion: "--no-install", description: "Do not install iDownload. Can only be used if it is currently installed.\n                            Will save ~100 KB of RAM.\n                            Note that iDownload will be deleted when booting without the jailbreak.", type: .Flag),
         CommandLineArgument(longVersion: "--boot-args", description: "Set custom boot args.", type: .String),
         CommandLineArgument(shortVersion: "-e", longVersion: "--ecid", description: " The ECID of the device. Will use the first device found if unset.", type: .String),
+        CommandLineArgument(longVersion: "--restore-fs", description: "Restore the root filesystem.\n                            This will NOT rename the filesystem snapshot!\n                            This option disables the jailbreak.", type: .Flag)
     ]
     
     static func main(arguments args: ParsedArguments) -> Never {
@@ -108,6 +114,8 @@ class iStrapModule: CommandLineModule {
                 iDownload_noinstall = i.value as! Bool
             } else if i.longVersion == "--boot-args" {
                 boot_args = i.value as! String
+            } else if i.longVersion == "--restore-fs" {
+                globalRestoreFS = i.value as! Bool
             }
         }
         

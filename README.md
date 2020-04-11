@@ -1,14 +1,14 @@
 # Fugu
 Fugu is the first open source jailbreak tool based on the checkm8 exploit.  
     
-__UPDATE:__ Fugu will now install Sileo, SSH and Substitute automatically! Put your iDevice into DFU mode, run `Fugu iStrap`, unlock your iDevice and follow the on-screen prompts.  
-__IMPORTANT:__ This jailbreak is currently in development and only meant to be used by developers. Although the root filesystem is mounted read/write, __rebooting into non-jailbroken mode will reset the root filesystem back to stock!__ (i.e. Remove Sileo and your Tweaks)
+__UPDATE:__ Fugu will now install Sileo, SSH and Substitute automatically! Additionally, all changes to the root file system are now persistent. Put your iDevice into DFU mode, run `Fugu iStrap`, unlock your iDevice and follow the on-screen prompts.  
+__IMPORTANT:__ This jailbreak is currently in development and only meant to be used by developers.  
 
 # WARNING
 **!!! ONLY DOWNLOAD FUGU FROM [https://github.com/LinusHenze/Fugu](https://github.com/LinusHenze/Fugu) AS IT IS VERY EASY TO CREATE A VERSION OF FUGU THAT CONTAINS MALWARE !!!**
 
 # Supported Devices
-Currently, the iPad Pro (2017) and iPhone 7 are the only officially supported devices (on iOS 13 - 13.4).  
+Currently, the iPad Pro (2017) and iPhone 7 are the only officially supported devices (on iOS 13 - 13.4.1).  
 
 # Building
 _Note that you can also download a precompiled version from the releases tab._  
