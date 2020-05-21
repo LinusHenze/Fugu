@@ -8,7 +8,8 @@ __IMPORTANT:__ This jailbreak is currently in development and only meant to be u
 **!!! ONLY DOWNLOAD FUGU FROM [https://github.com/LinusHenze/Fugu](https://github.com/LinusHenze/Fugu) AS IT IS VERY EASY TO CREATE A VERSION OF FUGU THAT CONTAINS MALWARE !!!**
 
 # Supported Devices
-Currently, the iPad Pro (2017) and iPhone 7 are the only officially supported devices (on iOS 13 - 13.4.1).  
+Currently, the iPad Pro (2017, every size) and iPhone 7 are the only officially supported devices (on iOS 13 - 13.5).  
+All devices with the A10/A10X CPU should be supported.  
 
 # Building
 _Note that you can also download a precompiled version from the releases tab._  
