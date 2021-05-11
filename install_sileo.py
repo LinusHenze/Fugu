@@ -47,9 +47,9 @@ if not os.path.exists("bootstrap.tar.gz"):
     print("Downloading bootstrap.tar.gz...")
     download("bootstrap.tar.gz")
 
-if not os.path.exists("org.coolstar.sileo_1.6.0_iphoneos-arm.deb"):
+if not os.path.exists("org.coolstar.sileo_2.0.3_iphoneos-arm.deb"):
     print("Downloading Sileo...")
-    download("org.coolstar.sileo_1.6.0_iphoneos-arm.deb")
+    download("org.coolstar.sileo_2.0.3_iphoneos-arm.deb")
     
 if not os.path.exists("org.swift.libswift_5.0-electra2_iphoneos-arm.deb"):
     print("Downloading Swift...")
